@@ -1,24 +1,27 @@
 #include <iostream>
 #include <vector>
 
-int main() {
-
-    std::vector<int> numbers = {1, 4, 6};
-    int total = 0;
-    int mynum = 10;
-
-    for(int i = 0; i < numbers.size(); i++){
-        
-        for(int j = 0; j < numbers.size(); j++){
-
-            total = numbers[i] + numbers[j];
-
-            if(total == mynum){
-                
-                std::cout << "index: " << i << "," <<  j << std::endl;
+std::vector<int> twoSum(const std::vector<int>& nums, int target) {
+    for(int i = 0; i < nums.size(); i++){
+        for(int j = i + 1; j < nums.size(); j++){
+            if(nums[i] + nums[j] == target){
+                return {i, j};
             }
         }
     }
+    return {};
+}
 
+int main() {
+
+    std::vector<int> result1 = twoSum({2, 7, 11, 15}, 9);
+    std::vector<int> result2 = twoSum({3, 2, 4}, 6);
+    std::vector<int> result3 = twoSum({3, 3}, 6);
+
+    std::cout << result1[0] << result1[1] << '\n';
+    std::cout << result2[0] << result2[1] << '\n';
+    std::cout << result3[0] << result3[1] << '\n';
+    
+    system("pause");
     return 0;
 }
