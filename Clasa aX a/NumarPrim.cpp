@@ -3,7 +3,7 @@
 bool isPrime(int n);
 
 int main(){
-    std::cout << isPrime(1) << "\n";
+    std::cout << isPrime(2) << "\n";
     
     system("pause");
     return 0;
