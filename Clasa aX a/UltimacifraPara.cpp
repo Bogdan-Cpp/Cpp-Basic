@@ -29,6 +29,7 @@ int par(int x){
    }
 
    last = nrpare[0];
+   
 
    return last;
 }
