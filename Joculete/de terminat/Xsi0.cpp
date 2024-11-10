@@ -2,7 +2,8 @@
 #include <vector>
 
 void Tabla(char tabla[3][3]);
-void conditionCeck(int row, int col);
+void conditionCeck0(int row, int col, char simbol, char tabla[3][3]);
+void conditionCeckX(int row, int col, char simbol, char tabla[3][3]);
 void playerX(int row, int col, char simbol, char tabla[3][3]);
 void player0(int row, int col, char simbol, char tabla[3][3]);
 int isWin(char tabla[3][3]);
@@ -23,20 +24,23 @@ int main(){
          Tabla(tabla);
          break;
        }
-       if(win1 == 2){
+       if(win1 == 3){
          std::cout << "0 a castigat! \n";
          Tabla(tabla);
          break;
        }
+       //player0
        Tabla(tabla);
        player0(row, col, simbol, tabla);
+       
        int win2 = isWin(tabla);
        if(win2 == 2){
          std::cout << "X a castigat! \n";
          Tabla(tabla);
          break;
        }
-       if(win1 == 2){
+       
+       if(win2 == 3){
          std::cout << "0 a castigat! \n";
          Tabla(tabla);
          break;
@@ -58,54 +62,60 @@ void Tabla(char tabla[3][3]){
    }
 }
 
-void conditionCeck(int row, int col){
-    if(row > 2 || row < 0 && col > 2 || col < 0){
-        std::cout << "Pozitia ta nu este corecta!" << std::endl;
+void conditionCeck0(int row, int col, char simbol, char tabla[3][3]){
+    if(row > 2 || col > 2 || row < 0 || col < 0){
+      std::cout << "Pozitie invalida \n";
+      player0(row, col, simbol, tabla);
+    }
+}
+
+void conditionCeckX(int row, int col, char simbol, char tabla[3][3]){
+    if(row > 2 || col > 2 || row < 0 || col < 0){
+      std::cout << "Pozitie invalida \n";
+      playerX(row, col, simbol, tabla);
     }
 }
 
 void playerX(int row, int col, char simbol, char tabla[3][3]){
    std::cout << "Rand: ";
    std::cin >> row;
-
    std::cout << "Coloana: ";
    std::cin >> col;
-   conditionCeck(row, col);
-   if(tabla[row][col] == 'x' || tabla[row][col] == '0'){
+   std::cout << "Miscare (X): ";
+   std::cin >> simbol; 
+   conditionCeckX(row, col, simbol, tabla);
+    if(tabla[row][col] == 'x' || tabla[row][col] == '0'){
         std::cout << "Pozitie ocupata \n";
+        player0(row, col, simbol, tabla);
     }
     else{
-        std::cout << "Miscare (X): "; 
-        std::cin >> simbol;
-      if(simbol != 'x'){
-        std::cout << "Simbol incorect \n";
-        playerX(row, col, simbol, tabla);
-      }
-  
+       if(simbol != 'x'){
+         std::cout << "Simbol incorect \n";
+         playerX(row, col, simbol, tabla);
+       }
       else{tabla[row][col] = simbol;}
     }
-   
 }
 
 void player0(int row, int col, char simbol, char tabla[3][3]){
    std::cout << "Rand: ";
    std::cin >> row;
-
    std::cout << "Coloana: ";
    std::cin >> col;
-   conditionCeck(row, col);
-   if(tabla[row][col] == 'x' || tabla[row][col] == '0'){
+   std::cout << "Miscare (0): "; 
+   std::cin >> simbol;
+   conditionCeck0(row, col, simbol, tabla);
+    if(tabla[row][col] == 'x' || tabla[row][col] == '0'){
         std::cout << "Pozitie ocupata \n";
+        player0(row, col, simbol, tabla);
     }
-   else{
-       std::cout << "Miscare (0): "; 
-       std::cin >> simbol;
-     if(simbol != '0'){
-       std::cout << "Simbol incorect \n";
-       player0(row, col, simbol, tabla);
-     }
-     else{tabla[row][col] = simbol;}
-   }
+    else{
+       if(simbol != '0'){
+        std::cout << "Simbol incorect \n";
+        player0(row, col, simbol, tabla);
+       }
+      else{tabla[row][col] = simbol;}
+    }
 }
 
 int isWin(char tabla[3][3]){

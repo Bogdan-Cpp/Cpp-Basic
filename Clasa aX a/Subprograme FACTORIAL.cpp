@@ -3,7 +3,7 @@
 long long factorial(int n);
 
 int main(){
-    std::cout << factorial(10);
+    std::cout << factorial(15);
 
     std::cout << std::endl;
     system("pause");
