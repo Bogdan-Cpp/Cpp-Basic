@@ -50,6 +50,7 @@ int main(){
 
     std::cout << std::endl;
     system("pause");
+    
     return 0;
 }
 
@@ -88,6 +89,7 @@ void playerX(int row, int col, char simbol, char tabla[3][3]){
         std::cout << "Pozitie ocupata \n";
         player0(row, col, simbol, tabla);
     }
+
     else{
        if(simbol != 'x'){
          std::cout << "Simbol incorect \n";
