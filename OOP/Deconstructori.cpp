@@ -6,7 +6,7 @@ class Object{
     
     void nastere(){
         isAlive = new bool(true);
-        std::cout << "Oboectul a fost creat -> isAlive: " << *isAlive << std::endl;
+        std::cout << "Oboectul a fost creat -> isAlive: " << *isAlive << '\n';
     }
     ~Object(){
         std::cout << "Obiect distrus -> isAlive: " << *isAlive;
