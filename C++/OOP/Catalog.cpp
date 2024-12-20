@@ -32,12 +32,12 @@ class ListaElevi{
 };
 
 int main(){
-    ListaElevi le;
-    Elevi elv;
-    int alg;
-    int nota;
-    std::string nume;
-    std::string id;
+  ListaElevi le;
+  Elevi elv;
+  int alg;
+  int nota;
+  std::string nume;
+  std::string id;
     do{
       std::cout << "1. Adauga elev." << std::endl;
       std::cout << "2.Adauga nota." << std::endl;
@@ -46,15 +46,15 @@ int main(){
       std::cin >> alg;
       switch(alg){
         case 1:{
-           std::cin >> nume;
-           std::cin >> nota;
-           le.addElevi(nume, nota);
-           break;
+          std::cin >> nume;
+          std::cin >> nota;
+          le.addElevi(nume, nota);
+          break;
         }
         case 3:{
-           std::cin >> id;
-           le.afisare(id);
-           break;
+          std::cin >> id;
+          le.afisare(id);
+          break;
         }
       }
     }while(alg != 0);
