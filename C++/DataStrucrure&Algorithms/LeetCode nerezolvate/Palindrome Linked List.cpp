@@ -29,6 +29,7 @@ int main(){
     std::cout << var << " ";
 
     system("pause");
+
     return 0;
 }
 
